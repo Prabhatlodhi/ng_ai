@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link to={"/mcq"} style={{ textDecoration: "none" }}>
           <span>MCQ</span>
         </Link>
-        {/* <Link to={"/project"} style={{ textDecoration: "none" }}>
+        {/* <Link to={"/project"} style={{ textDecoration: "none" }}> 
           <span>PROJECT</span>
         </Link> */}
         {/* <Link to={"/main"} style={{textDecoration:"none"}}><span>G-ni</span></Link> */}
