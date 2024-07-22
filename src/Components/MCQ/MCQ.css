@@ -150,4 +150,15 @@
   .hr-line {
     display: none;
   }
+
+  .result{
+margin-bottom: 100px;
+  }
+
+  .input-feed{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    /* border: 1px solid red; */
+  }
 }
