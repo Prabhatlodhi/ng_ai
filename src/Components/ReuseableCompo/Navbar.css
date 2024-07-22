@@ -1,0 +1,22 @@
+.nav{
+    /* border:1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border: 0.1px solid gray;
+    position: fixed;
+    width: 100%;
+}
+
+.nav-options span{
+    margin: 25px 15px;
+    font-size: 14px;
+}
+
+.profile-picture img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+   
+}

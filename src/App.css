@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.app{
+    /* border: 1px solid red; */
+}
+
+html{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* below code for handling all scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+  height: 8px; /* Adjust the height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(175, 175, 175); /* Scrollbar color */
+  border-radius: 10px; /* Optional: for rounded corners */
+}
