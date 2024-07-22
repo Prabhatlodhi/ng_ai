@@ -2,6 +2,7 @@
   /* border: 1px solid red; */
   max-width: 2000px;
   margin: 0px auto;
+  background-color: var(--white-color);
 }
 
 .header {
@@ -13,13 +14,13 @@
   padding: 0px 20px;
   margin-top: 5px;
   a {
-    color: black;
+    color: var(--white-color);
     text-decoration: none;
     margin: 15px 35px;
   }
   img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50px;
   }
 }
@@ -54,9 +55,9 @@
   button {
     padding: 5px 10px;
     margin: 0px 10px;
-    background-color: var(--button-base-color);
+    background-color: var(--transparent-button);
     outline: var(--outline-none);
-    border: var(--border-none);
+    border: 0.5px solid grey;
     padding: var(--button-padding);
     color: var(--white-color);
     border-radius: var(--border-radius-3);

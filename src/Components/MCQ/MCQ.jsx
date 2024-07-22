@@ -40,6 +40,13 @@ const Experi = () => {
   };
 
   const handleGenerateMCQ = () => {
+    if (topic.length < 1  ) {
+      toast.error("Please enter topic name or select from suggestion box.");
+      return;
+    }if (typeof topic === 'number' || !isNaN(topic)) {
+      toast.error("Topic name should not be a number.");
+      return;
+    }
     if (!topic || !mcqNumber) {
       toast.error("Please enter a topic and the number of questions");
       return;
