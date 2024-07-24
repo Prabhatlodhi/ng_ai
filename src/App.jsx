@@ -8,6 +8,7 @@ import {
 import Sidebar from "./Components/Sidebar/Sidebar";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import PrivateRoute from "./PrivateRoutes/PrivateRoutes"
+import Project from "./Components/Project/Project";
 import MCQ from "./Components/MCQ/MCQ"
 
 const App = () => {
@@ -21,8 +22,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/mcq" element={<PrivateRoute element={MCQ} />} />
-          {/* <Route path="/main" element={<PrivateRoute element={Main} />} />
-          <Route path="/project" element={<PrivateRoute element={Project} />} /> */}
+          {/* <Route path="/main" element={<PrivateRoute element={Main} />} />*/}
+          <Route path="/project" element={<PrivateRoute element={Project} />} /> 
           {/* <Route path="/mcq" element={<PrivateRoute element={MCQ} />} /> */}
           {/* <Route path="/Experi" element={<PrivateRoute element={Experi} />} /> */}
         </Routes>

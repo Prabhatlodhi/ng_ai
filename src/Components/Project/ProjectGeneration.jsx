@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { assets } from "../../assets/assets";
-import "./DisplayResult.css";
+import "./ProjectGeneration.css";
 
-const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
+const ProjectGeneration = ({ topic, numProjects, response, updateResponse }) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState(response || "");
   const [recentPrompt, setRecentPrompt] = useState("");
 
   useEffect(() => {
-    if (topic && mcqNumber && !response) {
+    if (topic && numProjects && !response) {
       fetchData();
     }
-  }, [topic, mcqNumber]);
+  }, [topic, numProjects]);
 
   const delayPara = (index, nextWord) => {
     setTimeout(() => {
@@ -22,16 +22,16 @@ const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
 
   const fetchData = async () => {
     setLoading(true);
-    setRecentPrompt(`Generate ${mcqNumber} MCQ questions on ${topic}`);
+    setRecentPrompt(`Generating ${numProjects} project idea on ${topic}`);
     const payload = {
       topic,
-      numQuestions: mcqNumber,
+      numIdeas: numProjects,
     };
     const token = localStorage.getItem("token");
 
     try {
       const response = await axios.post(
-        "https://mcq-curriculum-ai.navgurukul.org/mcq/search",
+        "https://mcq-curriculum-ai.navgurukul.org/project/generate",
         payload,
         {
           headers: {
@@ -40,34 +40,21 @@ const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
         }
       );
 
-      const mcqOutput = response.data.data.mcq_output;
-      let responseArray = mcqOutput.split("**");
-      let newResponse = "";
-      for (let i = 0; i < responseArray.length; i++) {
-        if (i === 0 || i % 2 !== 1) {
-          newResponse += responseArray[i];
-        } else {
-          newResponse += "<b>" + responseArray[i] + "</b>";
-        }
-      }
-
-      let formattedResponse = newResponse.split("*").join("<br/>");
-      formattedResponse = formattedResponse.replace(
-        /\*\*\s*([0-9]+)\./g,
-        "<br/>$1."
-      );
-      formattedResponse = formattedResponse.replace(/\n\n/g, "<br/><br/>");
-
-      // Ensuring each option is on a new line
-      formattedResponse = formattedResponse.replace(/\n/g, "<br/>");
-
-      let newResponseArray = formattedResponse.split(" ");
+      const projects = response.data.data.Projects;
+      const projectDescription = projects.map(proj => `
+        <div>
+          <h3>${proj.title.replace("## ", "")}</h3>
+          <p>${proj.description}</p>
+          <a href="${proj.url}" target="_blank">View Project Details</a>
+        </div>
+      `).join("");
+      let newResponseArray = projectDescription.split(" ");
       setResultData("");
       for (let i = 0; i < newResponseArray.length; i++) {
         const nextWord = newResponseArray[i];
         delayPara(i, nextWord + " ");
       }
-      updateResponse(formattedResponse);
+      updateResponse(projectDescription);
     } catch (error) {
       console.error("Error fetching data:", error);
       setResultData("An error occurred while fetching data.");
@@ -79,7 +66,6 @@ const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
 
   const auth = JSON.parse(localStorage.getItem("AUTH"));
   const profilePicture = auth?.profile_picture || assets.Student;
-   
 
   return (
     <>
@@ -100,7 +86,7 @@ const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
         ) : (
           <>
             <img src={assets.NG_logo} alt="React Logo" />
-            <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+            <div dangerouslySetInnerHTML={{ __html: resultData }}></div>
           </>
         )}
       </div>
@@ -108,4 +94,4 @@ const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
   );
 };
 
-export default DisplayResult;
+export default ProjectGeneration;

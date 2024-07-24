@@ -37,10 +37,10 @@ input::-webkit-inner-spin-button {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track color */
+  background: var(--background-color); /* Track color */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(175, 175, 175); /* Scrollbar color */
+  background: rgb(133, 131, 131); /* Scrollbar color */
   border-radius: 10px; /* Optional: for rounded corners */
 }
