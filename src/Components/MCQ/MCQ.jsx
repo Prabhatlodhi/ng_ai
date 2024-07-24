@@ -1,7 +1,7 @@
 import "./MCQ.css";
 import Navbar from "../ReuseableCompo/Navbar";
 import { assets } from "../../assets/assets";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useRef } from "react"; // added useRef
 import DisplayResult from "./DisplayResult";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,6 +25,7 @@ const MCQ = () => {
   const [topic, setTopic] = useState("");
   const [mcqNumber, setMcqNumber] = useState("");
   const [responses, setResponses] = useState([]);
+  const apistopRef = useRef(false);  
 
   useEffect(() => {
     if (localStorage.getItem("loginSuccess") === "true") {
@@ -39,10 +40,11 @@ const MCQ = () => {
   };
 
   const handleGenerateMCQ = () => {
-    if (topic.length < 1  ) {
-      toast.error("Please enter topic name or select from suggestion box.");
+    if (topic.length <= 1  ) {
+      toast.error("Please enter correct topic name or select from suggestion box.");
       return;
-    }if (typeof topic === 'number' || !isNaN(topic)) {
+    }
+    if (typeof topic === "number" || !isNaN(topic)) {
       toast.error("Topic name should not be a number.");
       return;
     }
@@ -146,6 +148,7 @@ const MCQ = () => {
                     updateResponse={(newResponse) =>
                       updateResponse(index, newResponse)
                     }
+                    apistopRef={apistopRef}  
                   />
                 ))
               ) : (
@@ -153,9 +156,15 @@ const MCQ = () => {
                   <h2 style={{ textAlign: "center", margin: "10px" }}>
                     Enter topic name for generating MCQ
                   </h2>
-                  <p style={{color:"white", fontSize:"11px",textAlign: "center",}}>
-                    For more than 30 MCQs, you can receive the
-                    details via email with downloadable PDFs.
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: "11px",
+                      textAlign: "center",
+                    }}
+                  >
+                    For more than 30 MCQs, you can receive the details via email
+                    with downloadable PDFs.
                   </p>
                 </div>
               )}

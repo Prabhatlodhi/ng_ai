@@ -19,6 +19,16 @@
   }
 }
 
+.code-block {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+
 .result-data {
     display: flex;
     justify-content: flex-start;

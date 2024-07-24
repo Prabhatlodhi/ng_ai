@@ -1,18 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { assets } from "../../assets/assets";
 import "./DisplayResult.css";
 
-const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
+const DisplayResult = ({ topic, mcqNumber, response, apistopRef, updateResponse }) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState(response || "");
   const [recentPrompt, setRecentPrompt] = useState("");
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    if (topic && mcqNumber && !response) {
+    if (topic && mcqNumber && !response && !apistopRef.current) {
       fetchData();
+      apistopRef.current = true;
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+      timerRef.current = setTimeout(() => {
+        apistopRef.current = false;
+      }, 2000);
     }
-  }, [topic, mcqNumber]);
+  }, [topic, mcqNumber,]);
 
   const delayPara = (index, nextWord) => {
     setTimeout(() => {
@@ -60,6 +68,12 @@ const DisplayResult = ({ topic, mcqNumber, response, updateResponse }) => {
 
       // Ensuring each option is on a new line
       formattedResponse = formattedResponse.replace(/\n/g, "<br/>");
+
+      // Wrapping code blocks in a black box
+      formattedResponse = formattedResponse.replace(
+        /```([^`]+)```/g,
+        '<div class="code-block">$1</div>'
+      );
 
       let newResponseArray = formattedResponse.split(" ");
       setResultData("");

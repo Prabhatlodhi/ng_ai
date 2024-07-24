@@ -126,6 +126,7 @@
   width: 130px;
   padding: 4px;
   margin: 5px 10px;
+  cursor: pointer;
 }
 
 .generate-proj-btn {
@@ -151,7 +152,7 @@
 
 .proj-pdf {
   color: white;
-  font-size: 10px;
+  font-size: 12px;
   text-decoration: underline;
 }
 
@@ -212,5 +213,8 @@
   .project-num-wrapper {
     width: 100%;
     padding: 0px 3%;
+  }
+  .result-project {
+    height: 75vh;
   }
 }

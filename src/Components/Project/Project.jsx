@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import axios from "axios";
 import Navbar from "../ReuseableCompo/Navbar";
 import "./Project.css";
 import Modal from "../ReuseableCompo/Modal/Modal";
 import ProjectGeneration from "./ProjectGeneration";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Project = () => {
   const [projectHistory, setProjectHistory] = useState([]);
@@ -15,16 +17,35 @@ const Project = () => {
   const [topic, setTopic] = useState("");
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const apistopRefProject = useRef(false);
 
   const handleGenerateProjects = () => {
     if (!topic) {
-      alert("Please enter a topic.");
+      toast.error("Please provide the topic name for which you would like to generate a project.");
+      return;
+    }
+    if (typeof topic === "number" || !isNaN(topic)) {
+      toast.error("Topic name should not be a number.");
+      return;
+    }
+    if (topic.length < 1  ) {
+      toast.error("Please enter topic name or select from suggestion box.");
+      return;
+    }
+    if (!topic || !numProjects) {
+      toast.error("Please enter a topic and the number of projects.");
+      return;
+    }
+    if (numProjects > 7) {
+      toast.error("We can currently generate up to 7 projects for you.");
       return;
     }
     setProjectData((prevData) => [
       ...prevData,
       { topic, numProjects, response: null },
     ]);
+    setTopic("");
+    setNumProjects("");
   };
 
   const updateResponse = (index, newResponse) => {
@@ -117,9 +138,10 @@ const Project = () => {
                 value={numProjects}
                 onChange={(e) => setNumProjects(e.target.value)}
                 onBlur={() => {
-                  if (numProjects > 10) {
-                    alert("The number of projects should not exceed 10.");
-                    setNumProjects(10);
+                  if (numProjects > 8) {
+                    // alert("The number of projects should not exceed 10.");
+                    toast.error("We can currently generate up to 7 projects for you.");
+                    setNumProjects(7);
                   }
                 }}
                 min="1"
@@ -169,6 +191,7 @@ const Project = () => {
                     updateResponse={(newResponse) =>
                       updateResponse(index, newResponse)
                     }
+                    apistopRefProject={apistopRefProject} 
                   />
                 ))
               ) : (
@@ -202,7 +225,7 @@ const Project = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {selectedProject.project_pdf[0].url}
+                      View Project Details
                     </a>
                   </>
                 )
@@ -211,6 +234,7 @@ const Project = () => {
           </Modal>
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

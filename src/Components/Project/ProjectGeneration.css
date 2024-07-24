@@ -17,6 +17,12 @@
     height: 40px;
     border-radius: 50px;
   }
+   
+}
+
+#tag-link {
+  color: blue !important;
+  text-decoration: underline !important;
 }
 
 .result-data {
@@ -37,7 +43,6 @@
   color: rgb(236, 22, 22) !important;
   text-decoration: underline;
 }
-
 
 /* @media screen and (max-width: 426px) {
   .result{
