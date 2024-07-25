@@ -30,10 +30,12 @@
 }
 
 .input-field-wrapper input {
-  padding: 4px 15px;
+  /* padding: 4px 15px; */
   outline: var(--outline-none);
   border: 0.5px solid gray;
   border-radius: var(--border-radius-3);
+   
+  padding: 4px 2%;
 }
 
 .topic-name,
@@ -195,7 +197,7 @@
    
 
   .input-field-wrapper input {
-    width: 100%;
-    padding: 5px 10px;
+    /* width: 100%; */
+    padding: 6px 10px;
   }
 }
