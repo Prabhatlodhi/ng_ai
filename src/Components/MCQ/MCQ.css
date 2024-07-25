@@ -188,6 +188,10 @@
 
   }
 
+  .btn-wrapper .generate-mcq-btn{
+    width: 55%;
+    padding: 5px 10px;
+  }
    
 
   .input-field-wrapper input {

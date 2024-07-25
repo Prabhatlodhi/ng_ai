@@ -226,4 +226,7 @@
     left: 0;
     width: 100%;
   }
+  .generate-proj-btn button {
+    padding: 5px 10px;
+  }
 }
