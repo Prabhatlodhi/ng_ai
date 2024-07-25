@@ -18,6 +18,8 @@ const Project = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const apistopRefProject = useRef(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handleGenerateProjects = () => {
     if (!topic) {
@@ -40,6 +42,9 @@ const Project = () => {
       toast.error("We can currently generate up to 7 projects for you.");
       return;
     }
+    if (numProjects > 3 && numProjects <= 7 ) {
+      setIsModalOpen(true);
+    }
     setProjectData((prevData) => [
       ...prevData,
       { topic, numProjects, response: null },
@@ -57,6 +62,12 @@ const Project = () => {
   };
 
   useEffect(() => {
+    //below code for fetching email from LS
+    const auth = JSON.parse(localStorage.getItem("AUTH"));
+    if (auth && auth.email) {
+      setEmail(auth.email);
+    }
+
     const fetchPreviousProjects = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -235,6 +246,17 @@ const Project = () => {
         )}
       </div>
       <ToastContainer />
+
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <h2>Request MCQs via Email</h2>
+          <br />
+          <br />
+          <p>You will receive the Projects in your email - {email} shortly.</p>
+          <br />
+          <br />
+        </Modal>
+      )}
     </>
   );
 };

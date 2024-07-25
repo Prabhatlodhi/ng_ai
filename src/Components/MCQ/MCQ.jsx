@@ -1,10 +1,11 @@
-import "./MCQ.css";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../ReuseableCompo/Navbar";
 import { assets } from "../../assets/assets";
-import { useState, useEffect, useRef } from "react"; // added useRef
 import DisplayResult from "./DisplayResult";
 import { ToastContainer, toast } from "react-toastify";
+import Modal from "../ReuseableCompo/Modal/Modal";
 import "react-toastify/dist/ReactToastify.css";
+import "./MCQ.css";
 
 const techLogos = [
   { logo: assets.ReactLogo, name: "React" },
@@ -18,19 +19,25 @@ const techLogos = [
   { logo: assets.ReactLogo, name: "Python" },
   { logo: assets.HTMLLogo, name: "Java" },
   { logo: assets.VueLogo, name: "Django" },
-  { logo: assets.VueLogo, name: "Django" },
+  { logo: assets.VueLogo, name: "C++" },
 ];
 
 const MCQ = () => {
   const [topic, setTopic] = useState("");
   const [mcqNumber, setMcqNumber] = useState("");
   const [responses, setResponses] = useState([]);
-  const apistopRef = useRef(false);  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const apistopRef = useRef(false);
 
   useEffect(() => {
     if (localStorage.getItem("loginSuccess") === "true") {
       toast.success("Login Successful. Welcome to NG!", {});
       localStorage.removeItem("loginSuccess");
+    }
+    const auth = JSON.parse(localStorage.getItem("AUTH"));
+    if (auth && auth.email) {
+      setEmail(auth.email);
     }
   }, []);
 
@@ -40,8 +47,10 @@ const MCQ = () => {
   };
 
   const handleGenerateMCQ = () => {
-    if (topic.length <= 1  ) {
-      toast.error("Please enter correct topic name or select from suggestion box.");
+    if (topic.length <= 1) {
+      toast.error(
+        "Please enter correct topic name or select from suggestion box."
+      );
       return;
     }
     if (typeof topic === "number" || !isNaN(topic)) {
@@ -56,9 +65,12 @@ const MCQ = () => {
       toast.error("Please enter topic name.");
       return;
     }
-    if (mcqNumber > 30) {
-      toast.error("MCQ number should not exceed 30");
+    if (mcqNumber > 500) {
+      toast.error("MCQ limit is 500");
       return;
+    }
+    if (mcqNumber > 30) {
+      setIsModalOpen(true);
     }
     setResponses((prevResponses) => [
       ...prevResponses,
@@ -112,7 +124,7 @@ const MCQ = () => {
                 </button>
               </div>
             </div>
-            <hr   className="hr-line" />
+            <hr className="hr-line" />
 
             <div className="suggestion-box">
               <h3>Quick Suggestion </h3>
@@ -135,7 +147,7 @@ const MCQ = () => {
               </div>
             </div>
           </div>
-          <div className="display-result" >
+          <div className="display-result">
             <div className="result">
             
               {responses.length > 0 ? (
@@ -148,7 +160,7 @@ const MCQ = () => {
                     updateResponse={(newResponse) =>
                       updateResponse(index, newResponse)
                     }
-                    apistopRef={apistopRef}  
+                    apistopRef={apistopRef}
                   />
                 ))
               ) : (
@@ -173,6 +185,17 @@ const MCQ = () => {
         </div>
         <ToastContainer />
       </div>
+
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <h2>Request MCQs via Email</h2>
+          <br />
+          <br />
+          <p>You will receive the MCQs in your email - {email} shortly.</p>
+          <br />
+          <br />
+        </Modal>
+      )}
     </>
   );
 };

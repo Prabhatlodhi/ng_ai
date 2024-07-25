@@ -3,7 +3,13 @@ import axios from "axios";
 import { assets } from "../../assets/assets";
 import "./DisplayResult.css";
 
-const DisplayResult = ({ topic, mcqNumber, response, apistopRef, updateResponse }) => {
+const DisplayResult = ({
+  topic,
+  mcqNumber,
+  response,
+  apistopRef,
+  updateResponse, 
+}) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState(response || "");
   const [recentPrompt, setRecentPrompt] = useState("");
@@ -20,7 +26,7 @@ const DisplayResult = ({ topic, mcqNumber, response, apistopRef, updateResponse 
         apistopRef.current = false;
       }, 2000);
     }
-  }, [topic, mcqNumber,]);
+  }, [topic, mcqNumber]);
 
   const delayPara = (index, nextWord) => {
     setTimeout(() => {

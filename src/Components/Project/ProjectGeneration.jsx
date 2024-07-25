@@ -3,7 +3,13 @@ import axios from "axios";
 import { assets } from "../../assets/assets";
 import "./ProjectGeneration.css";
 
-const ProjectGeneration = ({ topic, numProjects, response, updateResponse,apistopRefProject }) => {
+const ProjectGeneration = ({
+  topic,
+  numProjects,
+  response,
+  updateResponse,
+  apistopRefProject,
+}) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState(response || "");
   const [recentPrompt, setRecentPrompt] = useState("");
@@ -13,7 +19,7 @@ const ProjectGeneration = ({ topic, numProjects, response, updateResponse,apisto
       fetchData();
       apistopRefProject.current = true;
       setTimeout(() => {
-        apistopRefProject.current = false; 
+        apistopRefProject.current = false;
       }, 2000);
     }
   }, [topic, numProjects]);
@@ -45,13 +51,19 @@ const ProjectGeneration = ({ topic, numProjects, response, updateResponse,apisto
       );
 
       const projects = response.data.data.Projects;
-      const projectDescription = projects.map(proj => `
+      const projectDescription = projects
+        .map(
+          (proj) => `
         <div className="Link-tag"  >
           <h3>${proj.title.replace("## ", "")}</h3>
           <p>${proj.description}</p>
-          <a href="${proj.url}" target="_blank" id="tag-link">View Project Details</a>
+          <a href="${
+            proj.url
+          }" target="_blank" id="tag-link">View Project Details</a>
         </div>
-      `).join("");
+      `
+        )
+        .join("");
       let newResponseArray = projectDescription.split(" ");
       setResultData("");
       for (let i = 0; i < newResponseArray.length; i++) {
