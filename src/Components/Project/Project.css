@@ -220,4 +220,10 @@
   .generate-proj-btn {
     margin-bottom: 15px;
   }
+  .form-detail { 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
 }
