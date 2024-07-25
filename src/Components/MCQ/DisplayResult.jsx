@@ -120,7 +120,11 @@ const DisplayResult = ({
         ) : (
           <>
             <img src={assets.NG_logo} alt="React Logo" />
-            <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+            {mcqNumber > 30 ? (
+              <p>You will receive the MCQs via email shortly.</p>
+            ) : (
+              <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+            )}
           </>
         )}
       </div>

@@ -161,7 +161,7 @@ const Project = () => {
             <div className="generate-proj-btn">
               <button
                 onClick={handleGenerateProjects}
-                style={{ marginTop: "8px" }}
+                style={{ marginTop: "8px", cursor:"pointer" }}
               >
                 Generate Project
               </button>
