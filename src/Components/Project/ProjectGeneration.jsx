@@ -32,7 +32,7 @@ const ProjectGeneration = ({
 
   const fetchData = async () => {
     setLoading(true);
-    setRecentPrompt(`Generating ${numProjects} project idea on ${topic}`);
+    setRecentPrompt(`Generate ${numProjects} project idea on ${topic}`);
     const payload = {
       topic,
       numIdeas: numProjects,

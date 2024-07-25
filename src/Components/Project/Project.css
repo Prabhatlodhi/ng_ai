@@ -215,6 +215,9 @@
     padding: 0px 3%;
   }
   .result-project {
-    height: 75vh;
+    height: 70vh;
+  }
+  .generate-proj-btn {
+    margin-bottom: 15px;
   }
 }
