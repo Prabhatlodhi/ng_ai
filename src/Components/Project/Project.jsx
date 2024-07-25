@@ -23,7 +23,9 @@ const Project = () => {
 
   const handleGenerateProjects = () => {
     if (!topic) {
-      toast.error("Please provide the topic name for which you would like to generate a project.");
+      toast.error(
+        "Please provide the topic name for which you would like to generate a project."
+      );
       return;
     }
     if (typeof topic === "number" || !isNaN(topic)) {
@@ -40,6 +42,7 @@ const Project = () => {
     }
     if (numProjects > 7) {
       toast.error("We can currently generate up to 7 projects for you.");
+      setNumProjects(7)
       return;
     }
     if (numProjects > 3 && numProjects <= 7 ) {
@@ -148,13 +151,15 @@ const Project = () => {
                 id="numProjects"
                 value={numProjects}
                 onChange={(e) => setNumProjects(e.target.value)}
-                onBlur={() => {
-                  if (numProjects > 8) {
-                    // alert("The number of projects should not exceed 10.");
-                    toast.error("We can currently generate up to 7 projects for you.");
-                    setNumProjects(7);
-                  }
-                }}
+                // onBlur={() => {
+                //   if (numProjects > 7) {
+                //     toast.error(
+                //       "We can currently generate up to 7 projects for you."
+                //     );
+                //     setNumProjects(7);
+
+                //   }
+                // }}
                 min="1"
               />
             </div>
@@ -210,7 +215,13 @@ const Project = () => {
                   <h2 style={{ textAlign: "center", margin: "10px" }}>
                     Enter topic name for generating projects
                   </h2>
-                  <p style={{color:"white", fontSize:"11px",textAlign: "center",}}>
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: "11px",
+                      textAlign: "center",
+                    }}
+                  >
                     For more than three projects, you can receive the project
                     details via email with downloadable PDFs.
                   </p>
@@ -249,7 +260,7 @@ const Project = () => {
 
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
-          <h2>Request MCQs via Email</h2>
+          <h2>Request Projects via Email</h2>
           <br />
           <br />
           <p>You will receive the Projects in your email - {email} shortly.</p>
