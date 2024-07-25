@@ -34,7 +34,7 @@ const LoginPage = () => {
 
         setLoading(true);
         if (resp.data.user) {
-          toast.success("Login Successful. Welcome to NG-AI!");
+          toast.success("Login Successful. Welcome to Navgurukul.");
           localStorage.setItem("loginSuccess", "true");
         }
 
