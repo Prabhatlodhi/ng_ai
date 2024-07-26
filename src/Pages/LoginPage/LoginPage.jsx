@@ -34,7 +34,7 @@ const LoginPage = () => {
 
         setLoading(true);
         if (resp.data.user) {
-          toast.success("Login Successful. Welcome to Navgurukul.");
+          toast.success("Login Successful. Welcome to Curriculum-AI.");
           localStorage.setItem("loginSuccess", "true");
         }
 
@@ -97,17 +97,14 @@ const LoginPage = () => {
           <div className="content">
             <div className="text-section">
               <div className="container">
-                <div className="row"><span>Lorem, ipsum </span>
+                <div className="row"><span>Welcome to</span>
                   <div className="col-md-12 text-center">
-                    <h3 className="animate-charcter  ">NG-AI landing page.</h3>
+                    <h3 className="animate-charcter  ">Curriculum-AI</h3>
                   </div>
                 </div>
               </div> 
               <p className="para-landing-text" >
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Consectetur quos tenetur facere consequuntur ex, nostrum ipsam?
-                Dolor iure perspiciatis culpa corporis provident omnis molestiae
-                quis voluptatum aliquid et. Natus, sequi?
+              Welcome to our Curriculum-AI, designed to generate multiple-choice questions (MCQs) and projects on various technologies like React, HTML, and CSS. We can conveniently share additional MCQs and project ideas via email. A multi-purpose platform for educational institutions, NGOs, and anyone aiming to improve their tech training programs.
               </p>
               <div className="buttons">
                 <button className="btn">

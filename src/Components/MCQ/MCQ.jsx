@@ -32,7 +32,7 @@ const MCQ = () => {
 
   useEffect(() => {
     if (localStorage.getItem("loginSuccess") === "true") {
-      toast.success("Login Successful. Welcome to NG!", {});
+      toast.success("Login Successful. Welcome to Curriculum-AI.", {});
       localStorage.removeItem("loginSuccess");
     }
     const auth = JSON.parse(localStorage.getItem("AUTH"));
