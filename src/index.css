@@ -17,6 +17,11 @@ a {
   text-decoration: none;
 }
 
+button{ 
+  padding: 6px 15px !important;
+  min-width: 100px;
+}
+
 #tag-link {
   color: blue !important;
   text-decoration: underline !important;
@@ -32,7 +37,8 @@ html {
 :root {
   --primary-color: #4caf50;
   --secondary-color: #ff9800;
-  --background-color: #211d3a;
+  /* --background-color: #211d3a; */
+  --background-color: #222831;
   --font-color: #d2d2d2;
   --font-size: 16px;
   --border-radius: 4px;

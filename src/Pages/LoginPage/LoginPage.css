@@ -36,9 +36,12 @@
 }
 
 .image-section img {
-  width: 650px;
-  height: 650px;
-  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  width: 600px;
+  height: 600px; 
+  border-radius: 7px;
+  margin-top: 5%;
+  margin-right: 35px;
+  /* clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); */
 }
 
 .text-section {
@@ -168,6 +171,8 @@
   .image-section img {
     width: 100%;
     height: 100%;
+      margin: 0px;
+      border-radius: 0px;
   }
   .navigation a {
     display: none;

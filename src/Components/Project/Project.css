@@ -111,11 +111,11 @@
 .projects-list {
   /* border: 1px solid red; */
   margin: 0px auto;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   height: 380px;
   overflow-y: scroll;
 }
@@ -124,6 +124,7 @@
   border: 0.5px solid grey;
   border-radius: 3px;
   width: 130px;
+  height: 50px;
   padding: 4px;
   margin: 5px 10px;
   cursor: pointer;
