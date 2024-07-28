@@ -100,6 +100,7 @@
 }
 
 .history-section {
+  width: 100%;
   text-align: center;
   text-decoration: underline;
 }
@@ -109,29 +110,26 @@
 }
 
 .projects-list {
-  /* border: 1px solid red; */
-  margin: 0px auto;
-  /* width: 75%; */
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center;
-  align-items: center; */
-  /* height: 380px;
-  overflow-y: scroll; */
-  justify-content: space-between;
-  height: auto; 
-  overflow-y: auto; 
-  padding: 1% 7%;
+  justify-content: center;
+  padding: 1% 8%;
+  overflow-y: scroll;
+
 }
 
 .project-entry {
   border: 0.5px solid grey;
   border-radius: 3px;
-  width: 135px;
+  width: 100px;
   height: 50px;
   padding: 4px 2%;
-  margin: 5px 10px;
+  /* margin: 5px 10px; */
   cursor: pointer;
+
+  min-width: 135px;
+  margin: 10px 20px; 
 }
 
 .generate-proj-btn {
@@ -204,7 +202,6 @@ width: 120px;
 
   .projects-list {
     justify-content: center;
-    width: 90%;
     padding: 1% 3%;
   }
 }
