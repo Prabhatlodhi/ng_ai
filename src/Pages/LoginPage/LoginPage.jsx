@@ -104,7 +104,7 @@ const LoginPage = () => {
                 </div>
               </div> 
               <p className="para-landing-text" >
-              Welcome to our Curriculum-AI, designed to generate multiple-choice questions (MCQs) and projects on various technologies like React, HTML, and CSS. We can conveniently share additional MCQs and project ideas via email. A multi-purpose platform for educational institutions, NGOs, and anyone aiming to improve their tech training programs.
+              Welcome to our Curriculum-AI, designed to generate multiple-choice questions (MCQs) and projects on various technologies like React & Next.js. We can conveniently share additional MCQs and project ideas via email. A multi-purpose platform for educational institutions, NGOs, and anyone aiming to improve their tech training programs.
               </p>
               <div className="buttons">
                 <button className="btn" onClick={() => window.location.href = loginUrl}>
