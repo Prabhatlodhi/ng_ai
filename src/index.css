@@ -20,6 +20,7 @@ a {
 button{ 
   padding: 6px 15px !important;
   min-width: 100px;
+  cursor: pointer;
 }
 
 #tag-link {

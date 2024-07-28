@@ -90,9 +90,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  padding-top: 5%;
+  padding-top: 6%;
 }
 
 .project-date {
@@ -111,21 +111,25 @@
 .projects-list {
   /* border: 1px solid red; */
   margin: 0px auto;
-  width: 70%;
+  /* width: 75%; */
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center;
   align-items: center; */
-  height: 380px;
-  overflow-y: scroll;
+  /* height: 380px;
+  overflow-y: scroll; */
+  justify-content: space-between;
+  height: auto; 
+  overflow-y: auto; 
+  padding: 1% 7%;
 }
 
 .project-entry {
   border: 0.5px solid grey;
   border-radius: 3px;
-  width: 110px;
+  /* width: 110px; */
   height: 50px;
-  padding: 4px;
+  padding: 4px 2%;
   margin: 5px 10px;
   cursor: pointer;
 }
@@ -183,9 +187,12 @@
     width: 100%;
     padding: 0px 5%;
   }
+  .projects-list {
+    padding: 1% 3%;
+  }
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 807px) {
   .input-topic-wrapper,
   .project-num-wrapper {
     width: 100%;
@@ -193,6 +200,12 @@
 
   .project-num-wrapper input {
     max-height: 30px;
+  }
+
+  .projects-list {
+    justify-content: center;
+    width: 90%;
+    padding: 1% 3%;
   }
 }
 
@@ -216,7 +229,8 @@
     padding: 0px 3%;
   }
   .result-project {
-    height: 70vh;
+    height: 68vh;
+    padding-bottom: 2%;
   }
   .generate-proj-btn {
     margin-bottom: 15px;

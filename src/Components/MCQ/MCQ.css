@@ -171,7 +171,8 @@
   }
 
   .result {
-    margin-bottom: 5%;
+    padding-bottom: 5%;
+    height: 70vh;
   }
 
   .input-feed {
