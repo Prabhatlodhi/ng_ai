@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "../ReuseableCompo/Navbar";
 import { assets } from "../../assets/assets";
 import DisplayResult from "./DisplayResult";

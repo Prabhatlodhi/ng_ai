@@ -175,7 +175,7 @@ const Project = () => {
             <div className="history-section">
               <h3>Previous Projects</h3>
               <div className="projects-list">
-                {projectHistory.length > 0 ? (
+                {!projectHistory.length > 0 ? (
                   projectHistory.map((project, index) => (
                     <div
                       className="project-entry"
@@ -189,7 +189,14 @@ const Project = () => {
                     </div>
                   ))
                 ) : (
-                  <p>No previous projects found</p>
+                  <div
+                    style={{
+                      width: "750px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <p>No previous projects found</p>
+                  </div>
                 )}
               </div>
             </div>

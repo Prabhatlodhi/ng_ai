@@ -24,55 +24,55 @@ const Sidebar = () => {
 //     await onSent(prompt);
 //   };
 
-  useEffect(() => {
-    const fetchHistory = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "https://mcq-curriculum-ai.navgurukul.org/mcq/getHistory",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  // useEffect(() => {
+  //   const fetchHistory = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token");
+  //       const response = await axios.get(
+  //         "https://mcq-curriculum-ai.navgurukul.org/mcq/getHistory",
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
 
-        if (response.data.status === "success") {
-          const historyData = response.data.data.userHistoryData.history;
-          const uniqueTopics = [
-            ...new Set(historyData.map((item) => item.topic)),
-          ];
-          setTopics(uniqueTopics);
-        }
-      } catch (error) {
-        console.error("Error fetching history:", error);
-      }
-    };
+  //       if (response.data.status === "success") {
+  //         const historyData = response.data.data.userHistoryData.history;
+  //         const uniqueTopics = [
+  //           ...new Set(historyData.map((item) => item.topic)),
+  //         ];
+  //         setTopics(uniqueTopics);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching history:", error);
+  //     }
+  //   };
 
-    const fetchProjects = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "https://mcq-curriculum-ai.navgurukul.org/project/getHistory",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token");
+  //       const response = await axios.get(
+  //         "https://mcq-curriculum-ai.navgurukul.org/project/getHistory",
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
 
-        if (response.data.status === "success") {
-          const projectData = response.data.data.userHistoryData.history;
-          setProjects(projectData);
-        }
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      }
-    };
+  //       if (response.data.status === "success") {
+  //         const projectData = response.data.data.userHistoryData.history;
+  //         setProjects(projectData);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching projects:", error);
+  //     }
+  //   };
 
-    fetchHistory();
-    fetchProjects();
-  }, []);
+  //   fetchHistory();
+  //   fetchProjects();
+  // }, []);
 
   const handleProjectClick = async (project) => {
     setModalOpen(true);
