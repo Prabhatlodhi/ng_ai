@@ -1,4 +1,3 @@
-// src/axiosConfig.js
 import axios from 'axios';
 
 const mainUrl = import.meta.env.VITE_PUBLIC_MAIN_URL;
