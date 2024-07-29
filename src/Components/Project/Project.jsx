@@ -1,4 +1,4 @@
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Navbar from "../ReuseableCompo/Navbar";
 import "./Project.css";
@@ -6,6 +6,29 @@ import Modal from "../ReuseableCompo/Modal/Modal";
 import ProjectGeneration from "./ProjectGeneration";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { assets } from "../../assets/assets";
+
+const techLogos = [
+  { logo: assets.ReactLogo, name: "React" },
+  { logo: assets.AngularLogo, name: "Angular" },
+  { logo: assets.VueLogo, name: "Vue" },
+  { logo: assets.HTMLLogo, name: "HTML" },
+  { logo: assets.ExpressLogo, name: "Express" },
+  { logo: assets.NodeLogo, name: "Node" },
+  { logo: assets.MongoLogo, name: "MongoDB" },
+  { logo: assets.CustomLogo, name: "Postgre" },
+  { logo: assets.ReactLogo, name: "Python" },
+  { logo: assets.HTMLLogo, name: "Java" },
+  { logo: assets.VueLogo, name: "Django" },
+  { logo: assets.VueLogo, name: "C++" },
+];
+
+const getLogoForTopic = (topic) => {
+  const tech = techLogos.find(
+    (tech) => tech.name.toLowerCase() === topic.toLowerCase()
+  );
+  return tech ? tech.logo : null;
+};
 
 const Project = () => {
   const [projectHistory, setProjectHistory] = useState([]);
@@ -172,6 +195,8 @@ const Project = () => {
               </button>
             </div>
 
+            <hr className="hr-line" />
+
             <div className="history-section">
               <h3>Previous Projects</h3>
               <div className="projects-list">
@@ -182,10 +207,19 @@ const Project = () => {
                       key={index}
                       onClick={() => handleProjectClick(project)}
                     >
-                      <h5 className="project-topic">{project.topic}</h5>
-                      <p className="project-date">
-                        {new Date(project.created_at).toLocaleString()}
-                      </p>
+                      <div className="image-container" >
+                        <img
+                          src={getLogoForTopic(project.topic)}
+                          alt={project.topic}
+                          style={{   }}
+                        />
+                      </div>
+                      <div className="topic-text" >
+                        <h5 className="project-topic" style={{textDecoration:"none", }} >{project.topic} project</h5>
+                        {/* <p className="project-date">
+                          {new Date(project.created_at).toLocaleString()}
+                        </p> */}
+                      </div>
                     </div>
                   ))
                 ) : (
